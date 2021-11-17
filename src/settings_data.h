@@ -165,6 +165,7 @@ static const struct rule empty_rule = {
         .progress_bar_alignment   = -1,
         .min_icon_size   = -1,
         .max_icon_size   = -1,
+        .on_action          = NULL,
 };
 
 
@@ -473,6 +474,17 @@ static const struct setting allowed_settings[] = {
                 .parser = NULL,
                 .parser_data = NULL,
                 .rule_offset = offsetof(struct rule, script),
+        },
+        {
+                .name = "on_action",
+                .section = "*",
+                .description = "on_action",
+                .type = TYPE_PATH,
+                .default_value = "*",
+                .value = NULL,
+                .parser = NULL,
+                .parser_data = NULL,
+                .rule_offset = offsetof(struct rule, on_action),
         },
         {
                 .name = "background",

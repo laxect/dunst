@@ -209,6 +209,7 @@ void invoke_action(const char *action)
 
         if (invoked && action_key) {
                 signal_action_invoked(invoked, action_key);
+                notification_run_on_action_script(invoked);
         }
 
         g_free(action_key);

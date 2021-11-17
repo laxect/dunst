@@ -95,6 +95,12 @@ void rule_apply(struct rule *r, struct notification *n)
 
                 n->script_count++;
         }
+        if (r->on_action){
+                n->on_action_scripts = g_renew(const char*,n->on_action_scripts,n->action_count + 1);
+                n->on_action_scripts[n->action_count] = r->on_action;
+
+                n->action_count++;
+        }
         if (r->set_stack_tag) {
                 g_free(n->stack_tag);
                 n->stack_tag = g_strdup(r->set_stack_tag);

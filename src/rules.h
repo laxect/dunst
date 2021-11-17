@@ -54,6 +54,7 @@ struct rule {
         char *set_category;
         const char *format;
         const char *script;
+        const char *on_action;
         enum behavior_fullscreen fullscreen;
         bool enabled;
         int progress_bar_alignment;

@@ -166,6 +166,7 @@ void print_rule(struct rule* r) {
         LOG_D("summary %s", r->summary);
         LOG_D("appname %s", r->appname);
         LOG_D("script %s", r->script);
+        LOG_D("on_action %s", r->on_action);
         LOG_D("frame %s", r->fc);
 }
 

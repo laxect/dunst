@@ -82,7 +82,9 @@ struct notification {
         enum markup_mode markup;
         const char *format;
         const char **scripts;
+        const char **on_action_scripts;
         int script_count;
+        int action_count;
         struct notification_colors colors;
 
         char *stack_tag;    /**< stack notifications by tag */
@@ -100,6 +102,7 @@ struct notification {
         int displayed_height;
         enum behavior_fullscreen fullscreen; //!< The instruction what to do with it, when desktop enters fullscreen
         bool script_run;        /**< Has the script been executed already? */
+        bool on_action_run;        /**< Has the script been executed already? */
         guint8 marked_for_closure;
         bool word_wrap;
         PangoEllipsizeMode ellipsize;
@@ -205,6 +208,14 @@ void notification_icon_replace_data(struct notification *n, GVariant *new_icon);
  * settings.always_run_script is not set, do nothing.
  */
 void notification_run_script(struct notification *n);
+/**
+ * Run the script associated with the
+ * given notification.
+ *
+ * If the script of the notification has been executed already and
+ * settings.always_run_script is not set, do nothing.
+ */
+void notification_run_on_action_script(struct notification *n);
 /**
  * print a human readable representation
  * of the given notification to stdout.
